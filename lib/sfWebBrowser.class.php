@@ -820,7 +820,7 @@ class sfWebBrowser
    * @param     array     $headers
    * @return    array
    */
-  private function fixHeaders($headers)
+  protected function fixHeaders($headers)
   {
     $fixed_headers = array();
     foreach ($headers as $name => $value)
