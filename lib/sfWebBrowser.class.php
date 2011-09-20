@@ -732,7 +732,14 @@ class sfWebBrowser
    */
   protected function decodeGzip($gzip_text)
   {
-    return gzinflate(substr($gzip_text, 10));
+    $return = gzinflate(substr($gzip_text, 10));
+    
+    if(!$return)
+    {
+    	$return = file_get_contents('compress.zlib://data:who/cares;base64,'. base64_encode($gzip_text));
+    }
+    
+    return $return;
   }
 
   /**
